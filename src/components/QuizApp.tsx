@@ -35,10 +35,12 @@ export default function QuizApp() {
   const [quizEnded, setQuizEnded] = useState(false)
 
   useEffect(() => {
+    console.log('Quiz data:', quizData)
     setSubjects(quizData)
   }, [])
 
   const startQuiz = (subject: string, level: string) => {
+    console.log('Starting quiz:', subject, level)
     setCurrentSubject(subject)
     setCurrentLevel(level)
     setCurrentQuestionIndex(0)
@@ -68,33 +70,39 @@ export default function QuizApp() {
     }
   }
 
-  const renderSubjectSelection = () => (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {subjects.map((subject) => (
-        <Card key={subject.subject} className="cursor-pointer hover:shadow-md transition-shadow bg-secondary">
-          <CardHeader>
-            <CardTitle className="text-primary">{subject.subject}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            {subject.levels.map((level) => (
-              <Button
-                key={level.level}
-                onClick={() => startQuiz(subject.subject, level.level)}
-                className="w-full mb-2 bg-primary text-white hover:bg-primary/90"
-              >
-                {level.level}
-              </Button>
-            ))}
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  )
+  const renderSubjectSelection = () => {
+    console.log('Rendering subject selection, subjects:', subjects)
+    return (
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {subjects.map((subject) => (
+          <Card key={subject.subject} className="cursor-pointer hover:shadow-md transition-shadow bg-secondary">
+            <CardHeader>
+              <CardTitle className="text-primary">{subject.subject}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {subject.levels.map((level) => (
+                <Button
+                  key={level.level}
+                  onClick={() => startQuiz(subject.subject, level.level)}
+                  className="w-full mb-2 bg-primary text-white hover:bg-primary/90"
+                >
+                  {level.level}
+                </Button>
+              ))}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    )
+  }
 
   const renderQuestion = () => {
+    console.log('Rendering question, current subject:', currentSubject, 'current level:', currentLevel)
     const currentSubjectData = subjects.find(s => s.subject === currentSubject)
     const currentLevelData = currentSubjectData?.levels.find(l => l.level === currentLevel)
     const currentQuestion = currentLevelData?.questions[currentQuestionIndex]
+
+    console.log('Current question:', currentQuestion)
 
     if (!currentQuestion) return null
 
@@ -138,10 +146,13 @@ export default function QuizApp() {
     </Card>
   )
 
+  console.log('Quiz state:', { quizStarted, quizEnded, subjects: subjects.length })
+
   return (
     <div className="container mx-auto px-4 py-8 bg-background min-h-screen">
       <h1 className="text-3xl font-bold text-center mb-8 text-primary">Interactive Quiz App</h1>
-      {!quizStarted && renderSubjectSelection()}
+      {subjects.length === 0 && <p className="text-center">Loading quiz data...</p>}
+      {subjects.length > 0 && !quizStarted && renderSubjectSelection()}
       {quizStarted && !quizEnded && renderQuestion()}
       {quizEnded && renderResults()}
     </div>
