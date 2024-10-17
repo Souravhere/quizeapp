@@ -71,16 +71,16 @@ export default function QuizApp() {
   const renderSubjectSelection = () => (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {subjects.map((subject) => (
-        <Card key={subject.subject} className="cursor-pointer hover:shadow-md transition-shadow">
+        <Card key={subject.subject} className="cursor-pointer hover:shadow-md transition-shadow bg-secondary">
           <CardHeader>
-            <CardTitle>{subject.subject}</CardTitle>
+            <CardTitle className="text-primary">{subject.subject}</CardTitle>
           </CardHeader>
           <CardContent>
             {subject.levels.map((level) => (
               <Button
                 key={level.level}
                 onClick={() => startQuiz(subject.subject, level.level)}
-                className="w-full mb-2"
+                className="w-full mb-2 bg-primary text-white hover:bg-primary/90"
               >
                 {level.level}
               </Button>
@@ -99,22 +99,22 @@ export default function QuizApp() {
     if (!currentQuestion) return null
 
     return (
-      <Card className="w-full max-w-2xl mx-auto">
+      <Card className="w-full max-w-2xl mx-auto bg-secondary">
         <CardHeader>
-          <CardTitle>{currentSubject} - {currentLevel}</CardTitle>
+          <CardTitle className="text-primary">{currentSubject} - {currentLevel}</CardTitle>
           <Progress value={(currentQuestionIndex + 1) / (currentLevelData?.questions.length || 1) * 100} className="w-full" />
         </CardHeader>
         <CardContent>
-          <h3 className="text-lg font-semibold mb-4">{currentQuestion.question}</h3>
+          <h3 className="text-lg font-semibold mb-4 text-foreground">{currentQuestion.question}</h3>
           <RadioGroup onValueChange={handleAnswerSelect} value={selectedAnswer}>
             {currentQuestion.options.map((option, index) => (
               <div key={index} className="flex items-center space-x-2 mb-2">
-                <RadioGroupItem value={option} id={`option-${index}`} />
-                <Label htmlFor={`option-${index}`}>{option}</Label>
+                <RadioGroupItem value={option} id={`option-${index}`} className="text-primary" />
+                <Label htmlFor={`option-${index}`} className="text-foreground cursor-pointer">{option}</Label>
               </div>
             ))}
           </RadioGroup>
-          <Button onClick={submitAnswer} className="mt-4 w-full" disabled={!selectedAnswer}>
+          <Button onClick={submitAnswer} className="mt-4 w-full bg-primary text-white hover:bg-primary/90" disabled={!selectedAnswer}>
             {currentQuestionIndex === (currentLevelData?.questions.length || 1) - 1 ? 'Finish' : 'Next'}
           </Button>
         </CardContent>
@@ -123,15 +123,15 @@ export default function QuizApp() {
   }
 
   const renderResults = () => (
-    <Card className="w-full max-w-md mx-auto text-center">
+    <Card className="w-full max-w-md mx-auto text-center bg-secondary">
       <CardHeader>
-        <CardTitle>Quiz Results</CardTitle>
+        <CardTitle className="text-primary">Quiz Results</CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-2xl font-bold mb-4">
+        <p className="text-2xl font-bold mb-4 text-foreground">
           Your score: {score} / {subjects.find(s => s.subject === currentSubject)?.levels.find(l => l.level === currentLevel)?.questions.length}
         </p>
-        <Button onClick={() => setQuizStarted(false)} className="w-full">
+        <Button onClick={() => setQuizStarted(false)} className="w-full bg-primary text-white hover:bg-primary/90">
           Back to Subjects
         </Button>
       </CardContent>
@@ -139,8 +139,8 @@ export default function QuizApp() {
   )
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-8">Interactive Quiz App</h1>
+    <div className="container mx-auto px-4 py-8 bg-background min-h-screen">
+      <h1 className="text-3xl font-bold text-center mb-8 text-primary">Interactive Quiz App</h1>
       {!quizStarted && renderSubjectSelection()}
       {quizStarted && !quizEnded && renderQuestion()}
       {quizEnded && renderResults()}
