@@ -8,7 +8,7 @@ import { Label } from "./ui/Label"
 import { Progress } from "./ui/Progress"
 import { motion, AnimatePresence } from "framer-motion"
 import confetti from 'canvas-confetti'
-import { Sparkles, Brain, Award } from 'lucide-react'
+import { Sparkles, Brain, Award, X } from 'lucide-react'
 import quizData from '../quizData.json'
 
 type Question = {
@@ -36,10 +36,21 @@ export default function QuizApp() {
   const [score, setScore] = useState(0)
   const [quizStarted, setQuizStarted] = useState(false)
   const [quizEnded, setQuizEnded] = useState(false)
+  const [showResults, setShowResults] = useState(false)
 
   useEffect(() => {
     setSubjects(quizData)
   }, [])
+
+  useEffect(() => {
+    if (quizEnded) {
+      setShowResults(true)
+      const timer = setTimeout(() => {
+        setShowResults(false)
+      }, 4000)
+      return () => clearTimeout(timer)
+    }
+  }, [quizEnded])
 
   const startQuiz = (subject: string, level: string) => {
     setCurrentSubject(subject)
@@ -74,6 +85,12 @@ export default function QuizApp() {
     } else {
       setQuizEnded(true)
     }
+  }
+
+  const closeResults = () => {
+    setShowResults(false)
+    setQuizStarted(false)
+    setQuizEnded(false)
   }
 
   const renderSubjectSelection = () => (
@@ -159,9 +176,16 @@ export default function QuizApp() {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="w-full max-w-md mx-auto"
+      className="fixed inset-0 flex items-center justify-center z-50"
     >
-      <Card className="text-center bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-2xl">
+      <div className="absolute inset-0 bg-black opacity-50 backdrop-blur-sm"></div>
+      <Card className="relative text-center bg-gradient-to-br from-purple-500 to-indigo-600 text-white shadow-2xl w-full max-w-md mx-4">
+        <Button
+          onClick={closeResults}
+          className="absolute top-2 right-2 bg-transparent hover:bg-white/10 text-white rounded-full p-2"
+        >
+          <X size={24} />
+        </Button>
         <CardHeader>
           <CardTitle className="text-3xl font-bold flex justify-center items-center">
             <Award className="mr-2" /> Quiz Results
@@ -176,7 +200,7 @@ export default function QuizApp() {
               ? "Perfect score! You're a genius!"
               : "Great job! Keep practicing to improve."}
           </p>
-          <Button onClick={() => setQuizStarted(false)} className="w-full bg-white text-purple-600 hover:bg-purple-100 transition-colors">
+          <Button onClick={closeResults} className="w-full bg-white text-purple-600 hover:bg-purple-100 transition-colors">
             Back to Subjects
           </Button>
         </CardContent>
@@ -202,7 +226,9 @@ export default function QuizApp() {
         )}
         {subjects.length > 0 && !quizStarted && renderSubjectSelection()}
         {quizStarted && !quizEnded && renderQuestion()}
-        {quizEnded && renderResults()}
+      </AnimatePresence>
+      <AnimatePresence>
+        {showResults && renderResults()}
       </AnimatePresence>
     </div>
   )
