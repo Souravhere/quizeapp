@@ -1,57 +1,242 @@
 [
-    {
-      "subject": "Mathematics",
-      "levels": [
-        {
-          "level": "Easy",
-          "questions": [
-            {
-              "question": "What is 2 + 2?",
-              "options": ["3", "4", "5", "6"],
-              "correctAnswer": "4"
-            },
-            {
-              "question": "What is 10 - 7?",
-              "options": ["1", "2", "3", "4"],
-              "correctAnswer": "3"
-            }
-          ]
-        },
-        {
-          "level": "Medium",
-          "questions": [
-            {
-              "question": "What is 8 x 7?",
-              "options": ["54", "56", "58", "60"],
-              "correctAnswer": "56"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "subject": "Science",
-      "levels": [
-        {
-          "level": "Easy",
-          "questions": [
-            {
-              "question": "What is the chemical symbol for water?",
-              "options": ["Wa", "H2O", "O2", "CO2"],
-              "correctAnswer": "H2O"
-            }
-          ]
-        },
-        {
-          "level": "Medium",
-          "questions": [
-            {
-              "question": "What is the largest planet in our solar system?",
-              "options": ["Earth", "Mars", "Jupiter", "Saturn"],
-              "correctAnswer": "Jupiter"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  {
+    "subject": "Mathematics",
+    "levels": [
+      {
+        "level": "Easy",
+        "questions": [
+          {
+            "question": "What is 2 + 2?",
+            "options": ["3", "4", "5", "6"],
+            "correctAnswer": "4"
+          },
+          {
+            "question": "What is 10 - 7?",
+            "options": ["1", "2", "3", "4"],
+            "correctAnswer": "3"
+          },
+          {
+            "question": "What is 5 x 3?",
+            "options": ["10", "12", "15", "18"],
+            "correctAnswer": "15"
+          }
+        ]
+      },
+      {
+        "level": "Medium",
+        "questions": [
+          {
+            "question": "What is 8 x 7?",
+            "options": ["54", "56", "58", "60"],
+            "correctAnswer": "56"
+          },
+          {
+            "question": "What is the square root of 64?",
+            "options": ["6", "7", "8", "9"],
+            "correctAnswer": "8"
+          },
+          {
+            "question": "What is 15% of 80?",
+            "options": ["10", "12", "14", "16"],
+            "correctAnswer": "12"
+          }
+        ]
+      },
+      {
+        "level": "Hard",
+        "questions": [
+          {
+            "question": "What is the value of x in the equation 2x + 5 = 21?",
+            "options": ["6", "7", "8", "9"],
+            "correctAnswer": "8"
+          },
+          {
+            "question": "What is the area of a triangle with base 6 cm and height 8 cm?",
+            "options": ["20 cm²", "24 cm²", "28 cm²", "32 cm²"],
+            "correctAnswer": "24 cm²"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "subject": "Science",
+    "levels": [
+      {
+        "level": "Easy",
+        "questions": [
+          {
+            "question": "What is the chemical symbol for water?",
+            "options": ["Wa", "H2O", "O2", "CO2"],
+            "correctAnswer": "H2O"
+          },
+          {
+            "question": "Which planet is known as the Red Planet?",
+            "options": ["Venus", "Mars", "Jupiter", "Saturn"],
+            "correctAnswer": "Mars"
+          },
+          {
+            "question": "What is the largest organ in the human body?",
+            "options": ["Heart", "Brain", "Liver", "Skin"],
+            "correctAnswer": "Skin"
+          }
+        ]
+      },
+      {
+        "level": "Medium",
+        "questions": [
+          {
+            "question": "What is the largest planet in our solar system?",
+            "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+            "correctAnswer": "Jupiter"
+          },
+          {
+            "question": "What is the chemical symbol for gold?",
+            "options": ["Go", "Gd", "Au", "Ag"],
+            "correctAnswer": "Au"
+          },
+          {
+            "question": "Which of these is not a state of matter?",
+            "options": ["Solid", "Liquid", "Gas", "Energy"],
+            "correctAnswer": "Energy"
+          }
+        ]
+      },
+      {
+        "level": "Hard",
+        "questions": [
+          {
+            "question": "What is the speed of light in vacuum?",
+            "options": ["299,792 km/s", "300,000 km/s", "310,000 km/s", "320,000 km/s"],
+            "correctAnswer": "299,792 km/s"
+          },
+          {
+            "question": "Which of these is not a type of elementary particle?",
+            "options": ["Quark", "Lepton", "Boson", "Neutron"],
+            "correctAnswer": "Neutron"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "subject": "History",
+    "levels": [
+      {
+        "level": "Easy",
+        "questions": [
+          {
+            "question": "In which year did Christopher Columbus first reach the Americas?",
+            "options": ["1492", "1500", "1510", "1520"],
+            "correctAnswer": "1492"
+          },
+          {
+            "question": "Who was the first President of the United States?",
+            "options": ["Thomas Jefferson", "John Adams", "George Washington", "Benjamin Franklin"],
+            "correctAnswer": "George Washington"
+          },
+          {
+            "question": "Which ancient wonder was located in Alexandria, Egypt?",
+            "options": ["Hanging Gardens", "Colossus", "Lighthouse", "Great Pyramid"],
+            "correctAnswer": "Lighthouse"
+          }
+        ]
+      },
+      {
+        "level": "Medium",
+        "questions": [
+          {
+            "question": "In which year did World War II end?",
+            "options": ["1943", "1945", "1947", "1950"],
+            "correctAnswer": "1945"
+          },
+          {
+            "question": "Who was the first Emperor of Rome?",
+            "options": ["Julius Caesar", "Augustus", "Nero", "Claudius"],
+            "correctAnswer": "Augustus"
+          },
+          {
+            "question": "Which country was NOT part of the Allied Powers during World War II?",
+            "options": ["United States", "Soviet Union", "United Kingdom", "Italy"],
+            "correctAnswer": "Italy"
+          }
+        ]
+      },
+      {
+        "level": "Hard",
+        "questions": [
+          {
+            "question": "In which year did the Taiping Rebellion in China end?",
+            "options": ["1856", "1860", "1864", "1868"],
+            "correctAnswer": "1864"
+          },
+          {
+            "question": "Who was the last Pharaoh of Ancient Egypt?",
+            "options": ["Cleopatra VII", "Nefertiti", "Hatshepsut", "Tiye"],
+            "correctAnswer": "Cleopatra VII"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "subject": "Geography",
+    "levels": [
+      {
+        "level": "Easy",
+        "questions": [
+          {
+            "question": "What is the capital of France?",
+            "options": ["London", "Berlin", "Madrid", "Paris"],
+            "correctAnswer": "Paris"
+          },
+          {
+            "question": "Which of these is NOT a continent?",
+            "options": ["Europe", "Africa", "Australia", "Atlantic"],
+            "correctAnswer": "Atlantic"
+          },
+          {
+            "question": "What is the largest ocean on Earth?",
+            "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+            "correctAnswer": "Pacific Ocean"
+          }
+        ]
+      },
+      {
+        "level": "Medium",
+        "questions": [
+          {
+            "question": "Which country is home to the world's largest desert (by area)?",
+            "options": ["Egypt", "Saudi Arabia", "Algeria", "Libya"],
+            "correctAnswer": "Algeria"
+          },
+          {
+            "question": "What is the longest river in South America?",
+            "options": ["Amazon River", "Parana River", "Orinoco River", "Magdalena River"],
+            "correctAnswer": "Amazon River"
+          },
+          {
+            "question": "Which mountain range runs along the border of France and Spain?",
+            "options": ["Alps", "Pyrenees", "Carpathians", "Apennines"],
+            "correctAnswer": "Pyrenees"
+          }
+        ]
+      },
+      {
+        "level": "Hard",
+        "questions": [
+          {
+            "question": "What is the name of the deep trench located in the Pacific Ocean?",
+            "options": ["Mariana Trench", "Tonga Trench", "Philippine Trench", "Kermadec Trench"],
+            "correctAnswer": "Mariana Trench"
+          },
+          {
+            "question": "Which African country is the only one to lie completely within the Northern Hemisphere?",
+            "options": ["Algeria", "Tunisia", "Morocco", "Egypt"],
+            "correctAnswer": "Tunisia"
+          }
+        ]
+      }
+    ]
+  }
+]
